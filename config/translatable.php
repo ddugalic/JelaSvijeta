@@ -1,5 +1,7 @@
 <?php
+
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Application Locales
@@ -9,9 +11,13 @@ return [
     |
     */
     'locales' => [
-        'en' => 'English',
-        'fr' => 'Français',
+        'en',
+        'fr',
+        'es',
+		'hr',
+		'de',
     ],
+
     /*
     |--------------------------------------------------------------------------
     | Locale separator
@@ -23,6 +29,7 @@ return [
     |
     */
     'locale_separator' => '-',
+
     /*
     |--------------------------------------------------------------------------
     | Default locale
@@ -31,9 +38,12 @@ return [
     | As a default locale, Translatable takes the locale of Laravel's
     | translator. If for some reason you want to override this,
     | you can specify what default should be used here.
+    | If you set a value here it will only use the current config value
+    | and never fallback to the translator one.
     |
     */
     'locale' => null,
+
     /*
     |--------------------------------------------------------------------------
     | Use fallback
@@ -46,6 +56,19 @@ return [
     |
     */
     'use_fallback' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Use fallback per property
+    |--------------------------------------------------------------------------
+    |
+    | The property fallback feature will return the translated value of
+    | the fallback locale if the property is empty for the selected
+    | locale. Note that 'use_fallback' must be enabled.
+    |
+     */
+    'use_property_fallback' => true,
+
     /*
     |--------------------------------------------------------------------------
     | Fallback Locale
@@ -57,6 +80,19 @@ return [
     |
     */
     'fallback_locale' => 'en',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Translation Model Namespace
+    |--------------------------------------------------------------------------
+    |
+    | Defines the default 'Translation' class namespace. For example, if
+    | you want to use App\Translations\CountryTranslation instead of App\CountryTranslation
+    | set this to 'App\Translations'.
+    |
+    */
+    'translation_model_namespace' => null,
+
     /*
     |--------------------------------------------------------------------------
     | Translation Suffix
@@ -68,6 +104,7 @@ return [
     |
     */
     'translation_suffix' => 'Translation',
+
     /*
     |--------------------------------------------------------------------------
     | Locale key
@@ -78,4 +115,15 @@ return [
     |
     */
     'locale_key' => 'locale',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Always load translations when converting to array
+    |--------------------------------------------------------------------------
+    | Setting this to false will have a performance improvement but will
+    | not return the translations when using toArray(), unless the
+    | translations relationship is already loaded.
+    |
+     */
+    'to_array_always_loads_translations' => true,
 ];

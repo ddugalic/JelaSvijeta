@@ -10,22 +10,21 @@ use App\IngredientTranslation;
 use App\Tag;
 use App\TagTranslation;
 use App\Language;
-use App\Services\createSlug;
 use Illuminate\Http\Request;
 
-class PagesController extends Controller
+class MealsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $meals = new Meal;
 
-        if (request()->has('lang')){
-            $meals = $meals->where('lang', request('lang'));
+        if (request()->has('locale')){
+            $meals = $meals->where('locale', request('lang'));
         }
         if (request()->has('category')){
             $meals = $meals->where('category', request('category'));

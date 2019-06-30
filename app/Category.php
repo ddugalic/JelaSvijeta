@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Dimsav\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
@@ -12,4 +12,8 @@ class Category extends Model
     public $translatedAttributes = ['title', 'slug'];
 
     protected $fillable = ['title', 'slug'];
+
+    public function meals(){
+		return $this->hasMany(Meal::class);
+	}
 }

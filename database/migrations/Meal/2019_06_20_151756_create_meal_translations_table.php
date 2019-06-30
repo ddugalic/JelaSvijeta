@@ -16,17 +16,14 @@ class CreateMealTranslationsTable extends Migration
         Schema::create('meal_translations', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('meal_id');
-            $table->string('lang', 10)->index();
+            $table->string('locale', 10)->index();
             $table->string('title');
             $table->string('slug', 100)->unique();
             $table->text('description');
 
-            $table->unique(['meal_id', 'lang']);
+            $table->unique(['meal_id', 'locale']);
             $table->foreign('meal_id')
             ->references('id')->on('meals')
-            ->onDelete('cascade');
-            $table->foreign('lang')
-            ->references('lang')->on('languages')
             ->onDelete('cascade');
         });
     }

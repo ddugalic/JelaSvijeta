@@ -15,8 +15,20 @@ class CreateIngredientsTable extends Migration
     {
         Schema::create('ingredients', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('online');
             $table->timestamps();
+        });
+
+        Schema::create('ingredient_meal', function (Blueprint $table) {
+            $table->integer('ingredient_id');
+            $table->integer('meal_id');
+
+            $table->primary(['ingredient_id', 'meal_id']);
+            $table->foreign('ingredient_id')
+            ->references('id')->on('ingredients')
+            ->onDelete('cascade');
+            $table->foreign('meal_id')
+            ->references('id')->on('meals')
+            ->onDelete('cascade');
         });
     }
 
@@ -28,5 +40,6 @@ class CreateIngredientsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('ingredients');
+        Schema::dropIfExists('ingredient_meal');
     }
 }

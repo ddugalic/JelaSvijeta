@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
+Route::get('/', 'MealsController@index')->name('pages.home');
 
 ?>

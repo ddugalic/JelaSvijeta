@@ -9,34 +9,36 @@ use App\Category;
     <br/>
     <div class="row">
         <div class="col-md-6">
-            Jezik:
+            Language:
             @foreach($langs as $lang)
             <a href="/?lang={{$lang->locale}}">{{$lang->locale}}</a> |
             @endforeach
         </div>
-        <div class="col-md-6 text-right">
-            Kategorija:
-            @foreach($cats as $c)
-                <a href="/?['lang' => request('lang'), 'with' => '{{$c->title}}']">
-                    {{$c->title}}
-                </a>
-            @endforeach
-        </div>
     </div>
+    <div class="row">
+            <div class="col-md-6 text-right">
+                Ctegory:
+                @foreach($cats as $cat)
+                <a href="{{ route('pages.home', ['lang' => request('lang'), 'with' => $cat->title]) }}">{{$cat->title}}</a>
+                @endforeach
+            </div>
+        </div>
     <br/><br/>
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Naziv</th>
-                <th scope="col">Opis</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
             </tr>
         </thead>
         <tbody>
             @foreach( $meals as $meal )
-            <tr>
-                <td>{{ $meal->title }}</td>
-                <td>{{ $meal->description }}</td>
-            </tr>
+                @if(isset($_GET['lang']))
+                    <tr>
+                        <td>{{ $meal->title }}</td>
+                        <td>{{ $meal->description }}</td>
+                    </tr>
+                @endif
             @endforeach
         </tbody>
     </table>

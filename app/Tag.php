@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Dimsav\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
@@ -13,8 +13,4 @@ class Tag extends Model
 
     protected $fillable = ['title', 'slug'];
 	
-	public function meals(){
-		return $this->belongsToMany('App\Meal')
-		->withTimestamps();
-	}
 }
